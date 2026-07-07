@@ -30,4 +30,4 @@ jobs:
         run: dotnet test --configuration Release --no-build --verbosity normal
 
       - name: Pack
-        run: dotnet pack UmbrellaFrame.EnumCentricStatusManagement.Core/UmbrellaFrame.EnumCentricStatusManagement.Core.csproj --configuration Release --no-build --output artifacts
+        run: dotnet pack UmbrellaFrame.EnumMeta.Core/UmbrellaFrame.EnumMeta.Core.csproj --configuration Release --no-build --output artifacts

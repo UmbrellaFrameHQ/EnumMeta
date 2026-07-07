@@ -1,4 +1,4 @@
-using UmbrellaFrame.EnumCentricStatusManagement.Core;
+using UmbrellaFrame.EnumMeta.Core;
 using Xunit;
 
 namespace BlogPostTests.Tests

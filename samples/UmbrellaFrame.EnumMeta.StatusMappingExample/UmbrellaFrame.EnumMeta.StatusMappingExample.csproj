@@ -3,13 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>UmbrellaFrame.EnumCentricStatusManagement.Samples.StatusMappingExample</RootNamespace>
+    <RootNamespace>UmbrellaFrame.EnumMeta.Samples.StatusMappingExample</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\UmbrellaFrame.EnumCentricStatusManagement.Core\UmbrellaFrame.EnumCentricStatusManagement.Core.csproj" />
+    <ProjectReference Include="..\..\UmbrellaFrame.EnumMeta.Core\UmbrellaFrame.EnumMeta.Core.csproj" />
   </ItemGroup>
 
 </Project>

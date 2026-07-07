@@ -1,8 +1,8 @@
-using UmbrellaFrame.EnumCentricStatusManagement.Core;
+using UmbrellaFrame.EnumMeta.Core;
 using System;
 using Xunit;
 
-namespace UmbrellaFrame.EnumCentricStatusManagement.Tests
+namespace UmbrellaFrame.EnumMeta.Tests
 {
     public enum TestStatus
     {

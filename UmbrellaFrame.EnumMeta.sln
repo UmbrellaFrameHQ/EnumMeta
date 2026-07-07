@@ -7,13 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F3E424BC-B35
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{314D7134-C6FC-49B1-8E26-06A6AC5DAE63}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbrellaFrame.EnumCentricStatusManagement.Core", "UmbrellaFrame.EnumCentricStatusManagement.Core\UmbrellaFrame.EnumCentricStatusManagement.Core.csproj", "{00BEA29A-D167-4D3A-A92A-2BE9A1C2E851}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbrellaFrame.EnumMeta.Core", "UmbrellaFrame.EnumMeta.Core\UmbrellaFrame.EnumMeta.Core.csproj", "{00BEA29A-D167-4D3A-A92A-2BE9A1C2E851}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbrellaFrame.EnumCentricStatusManagement.Tests", "UmbrellaFrame.EnumCentricStatusManagement.Tests\UmbrellaFrame.EnumCentricStatusManagement.Tests.csproj", "{EA9CC7DA-2D12-4DC8-8623-97355E15F75B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UmbrellaFrame.EnumMeta.Tests", "UmbrellaFrame.EnumMeta.Tests\UmbrellaFrame.EnumMeta.Tests.csproj", "{EA9CC7DA-2D12-4DC8-8623-97355E15F75B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{5D20AA90-6969-D8BD-9DCD-8634F4692FDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbrellaFrame.EnumCentricStatusManagement.StatusMappingExample", "samples\UmbrellaFrame.EnumCentricStatusManagement.StatusMappingExample\UmbrellaFrame.EnumCentricStatusManagement.StatusMappingExample.csproj", "{CADF6776-AC45-487E-B22D-43CA2D346A53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbrellaFrame.EnumMeta.StatusMappingExample", "samples\UmbrellaFrame.EnumMeta.StatusMappingExample\UmbrellaFrame.EnumMeta.StatusMappingExample.csproj", "{CADF6776-AC45-487E-B22D-43CA2D346A53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

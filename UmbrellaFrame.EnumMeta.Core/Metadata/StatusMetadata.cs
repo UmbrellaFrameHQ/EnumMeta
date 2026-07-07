@@ -1,6 +1,6 @@
 using System;
 
-namespace UmbrellaFrame.EnumCentricStatusManagement.Core
+namespace UmbrellaFrame.EnumMeta.Core
 {
     /// <summary>
     /// Represents status metadata resolved from an enum value.

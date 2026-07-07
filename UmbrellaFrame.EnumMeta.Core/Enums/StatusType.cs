@@ -1,5 +1,5 @@
 
-namespace UmbrellaFrame.EnumCentricStatusManagement.Core
+namespace UmbrellaFrame.EnumMeta.Core
 {
     /// <summary>
     /// Represents the default severity category for status metadata.

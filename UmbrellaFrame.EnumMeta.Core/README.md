@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ksomaz/EnumCentricStatusManagement/master/assets/umbrellaframe-enumcentricstatusmanagement-icon.png" width="180" alt="UmbrellaFrame.EnumCentricStatusManagement logo" />
+  <img src="https://raw.githubusercontent.com/UmbrellaFrameHQ/EnumMeta/master/assets/umbrellaframe-enummeta-icon.png" width="180" alt="UmbrellaFrame.EnumMeta logo" />
 </p>
 
-<h1 align="center">UmbrellaFrame.EnumCentricStatusManagement</h1>
+<h1 align="center">UmbrellaFrame.EnumMeta</h1>
 
 <p align="center">
-  <a href="https://www.nuget.org/packages/UmbrellaFrame.EnumCentricStatusManagement"><img src="https://img.shields.io/badge/NuGet-ready-004880?style=flat-square" alt="NuGet ready" /></a>
+  <a href="https://www.nuget.org/packages/UmbrellaFrame.EnumMeta"><img src="https://img.shields.io/badge/NuGet-ready-004880?style=flat-square" alt="NuGet ready" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="MIT license" /></a>
   <a href="https://learn.microsoft.com/dotnet/standard/net-standard"><img src="https://img.shields.io/badge/.NET%20Standard-2.0-purple?style=flat-square" alt=".NET Standard 2.0" /></a>
 </p>
@@ -23,13 +23,13 @@ Zero database dependency - cached reflection - safe `Try...` APIs - typed metada
 ### Installation
 
 ```bash
-dotnet add package UmbrellaFrame.EnumCentricStatusManagement
+dotnet add package UmbrellaFrame.EnumMeta
 ```
 
 ### Quick Start
 
 ```csharp
-using UmbrellaFrame.EnumCentricStatusManagement.Core;
+using UmbrellaFrame.EnumMeta.Core;
 
 public enum OperationStatus
 {
@@ -83,13 +83,13 @@ Veritabani bagimliligi yok - cache'li reflection - guvenli `Try...` API'leri - t
 ### Kurulum
 
 ```bash
-dotnet add package UmbrellaFrame.EnumCentricStatusManagement
+dotnet add package UmbrellaFrame.EnumMeta
 ```
 
 ### Hizli Baslangic
 
 ```csharp
-using UmbrellaFrame.EnumCentricStatusManagement.Core;
+using UmbrellaFrame.EnumMeta.Core;
 
 public enum OdemeDurumu
 {

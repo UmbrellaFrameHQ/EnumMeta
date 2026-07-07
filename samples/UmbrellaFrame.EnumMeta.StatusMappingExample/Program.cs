@@ -1,4 +1,4 @@
-using UmbrellaFrame.EnumCentricStatusManagement.Core;
+using UmbrellaFrame.EnumMeta.Core;
 
 var statusCodeFromDatabase = 2;
 var status = (UserRegistrationStatus)statusCodeFromDatabase;

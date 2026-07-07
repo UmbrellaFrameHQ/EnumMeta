@@ -6,18 +6,18 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Deterministic>true</Deterministic>
-    <PackageId>UmbrellaFrame.EnumCentricStatusManagement</PackageId>
-    <AssemblyName>UmbrellaFrame.EnumCentricStatusManagement.Core</AssemblyName>
-    <RootNamespace>UmbrellaFrame.EnumCentricStatusManagement.Core</RootNamespace>
+    <PackageId>UmbrellaFrame.EnumMeta</PackageId>
+    <AssemblyName>UmbrellaFrame.EnumMeta.Core</AssemblyName>
+    <RootNamespace>UmbrellaFrame.EnumMeta.Core</RootNamespace>
     <Version>1.4.0</Version>
     <Authors>Kürşat Solmaz</Authors>
     <Company>UmbrellaFrame</Company>
-    <Product>UmbrellaFrame.EnumCentricStatusManagement</Product>
+    <Product>UmbrellaFrame.EnumMeta</Product>
     <Description>Enum metadata helpers for status, message, and informational state management in .NET applications.</Description>
     <Copyright>Copyright © UmbrellaFrame 2024</Copyright>
     <PackageTags>enum;status;attribute;error-handling;metadata;result-management;state-management</PackageTags>
-    <PackageProjectUrl>https://github.com/ksomaz/EnumCentricStatusManagement</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ksomaz/EnumCentricStatusManagement</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/UmbrellaFrameHQ/EnumMeta</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/UmbrellaFrameHQ/EnumMeta</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>

@@ -1,5 +1,5 @@
 
-namespace UmbrellaFrame.EnumCentricStatusManagement.Core
+namespace UmbrellaFrame.EnumMeta.Core
 {
     /// <summary>
     /// Represents well-known indexes for <see cref="InfoAttribute"/> entries.

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>latest</LangVersion>
-    <RootNamespace>UmbrellaFrame.EnumCentricStatusManagement.Tests</RootNamespace>
+    <RootNamespace>UmbrellaFrame.EnumMeta.Tests</RootNamespace>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UmbrellaFrame.EnumCentricStatusManagement.Core\UmbrellaFrame.EnumCentricStatusManagement.Core.csproj" />
+    <ProjectReference Include="..\UmbrellaFrame.EnumMeta.Core\UmbrellaFrame.EnumMeta.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 
 using System;
 
-namespace UmbrellaFrame.EnumCentricStatusManagement.Core
+namespace UmbrellaFrame.EnumMeta.Core
 {
     /// <summary>
     /// Defines status metadata for an enum field.

@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ksomaz/EnumCentricStatusManagement/master/assets/umbrellaframe-enumcentricstatusmanagement-icon.png" width="180" alt="UmbrellaFrame.EnumCentricStatusManagement logo" />
+  <img src="https://raw.githubusercontent.com/UmbrellaFrameHQ/EnumMeta/master/assets/umbrellaframe-enummeta-icon.png" width="180" alt="UmbrellaFrame.EnumMeta logo" />
 </p>
 
-<h1 align="center">UmbrellaFrame.EnumCentricStatusManagement</h1>
+<h1 align="center">UmbrellaFrame.EnumMeta</h1>
 
 <p align="center">
-  <a href="https://www.nuget.org/packages/UmbrellaFrame.EnumCentricStatusManagement"><img src="https://img.shields.io/badge/NuGet-ready-004880?style=flat-square" alt="NuGet ready" /></a>
-  <a href="https://github.com/ksomaz/EnumCentricStatusManagement/actions/workflows/ci.yml"><img src="https://github.com/ksomaz/EnumCentricStatusManagement/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
+  <a href="https://www.nuget.org/packages/UmbrellaFrame.EnumMeta"><img src="https://img.shields.io/badge/NuGet-ready-004880?style=flat-square" alt="NuGet ready" /></a>
+  <a href="https://github.com/UmbrellaFrameHQ/EnumMeta/actions/workflows/ci.yml"><img src="https://github.com/UmbrellaFrameHQ/EnumMeta/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
   <a href="LICENSE.txt"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="MIT license" /></a>
   <a href="https://learn.microsoft.com/dotnet/standard/net-standard"><img src="https://img.shields.io/badge/.NET%20Standard-2.0-purple?style=flat-square" alt=".NET Standard 2.0" /></a>
 </p>
@@ -21,10 +21,10 @@
 
 Zero database dependency - cached reflection - safe `Try...` APIs - typed metadata models.
 
-UmbrellaFrame.EnumCentricStatusManagement lets you decorate enum members with status and info attributes, then resolve messages, severity values, names, and descriptions from one centralized place. It is designed for API responses, stored procedure status codes, workflow outcomes, validation states, and enum-based domain results.
+UmbrellaFrame.EnumMeta lets you decorate enum members with status and info attributes, then resolve messages, severity values, names, and descriptions from one centralized place. It is designed for API responses, stored procedure status codes, workflow outcomes, validation states, and enum-based domain results.
 
 ```text
-UmbrellaFrame.EnumCentricStatusManagement
+UmbrellaFrame.EnumMeta
 -> StatusAttribute, InfoAttribute, StatusType, InfoType
 -> GetEnumStatus / TryGetEnumStatus
 -> GetStatusMetadata / TryGetStatusMetadata
@@ -41,13 +41,13 @@ Its job is to keep enum-owned metadata close to the enum member that owns it. Bo
 ### Installation
 
 ```bash
-dotnet add package UmbrellaFrame.EnumCentricStatusManagement
+dotnet add package UmbrellaFrame.EnumMeta
 ```
 
 ### Quick Start
 
 ```csharp
-using UmbrellaFrame.EnumCentricStatusManagement.Core;
+using UmbrellaFrame.EnumMeta.Core;
 
 public enum UserRegistrationStatus
 {
@@ -130,7 +130,7 @@ var description = AccountState.Active.GetEnumInfoOrDefault(
 ### Runnable Example
 
 ```bash
-dotnet run --project samples/UmbrellaFrame.EnumCentricStatusManagement.StatusMappingExample/UmbrellaFrame.EnumCentricStatusManagement.StatusMappingExample.csproj
+dotnet run --project samples/UmbrellaFrame.EnumMeta.StatusMappingExample/UmbrellaFrame.EnumMeta.StatusMappingExample.csproj
 ```
 
 Expected output:
@@ -141,7 +141,7 @@ Error: User information could not be verified.
 
 ### Why This Package?
 
-| Feature | EnumCentricStatusManagement | Switch statements | Full result framework |
+| Feature | EnumMeta | Switch statements | Full result framework |
 |---|:---:|:---:|:---:|
 | Enum-owned messages | Yes | Manual | Partial |
 | Safe unknown-code handling | Yes | Manual | Yes |
@@ -162,8 +162,8 @@ dotnet test
 Create a release package:
 
 ```bash
-dotnet build UmbrellaFrame.EnumCentricStatusManagement.Core/UmbrellaFrame.EnumCentricStatusManagement.Core.csproj -c Release
-dotnet pack UmbrellaFrame.EnumCentricStatusManagement.Core/UmbrellaFrame.EnumCentricStatusManagement.Core.csproj -c Release --no-build
+dotnet build UmbrellaFrame.EnumMeta.Core/UmbrellaFrame.EnumMeta.Core.csproj -c Release
+dotnet pack UmbrellaFrame.EnumMeta.Core/UmbrellaFrame.EnumMeta.Core.csproj -c Release --no-build
 ```
 
 ### License
@@ -178,7 +178,7 @@ MIT (c) UmbrellaFrame
 
 Veritabani bagimliligi yok - cache'li reflection - guvenli `Try...` API'leri - tiplenmis metadata modelleri.
 
-UmbrellaFrame.EnumCentricStatusManagement, enum uyelerine status ve info attribute'lari ekleyerek mesaj, durum tipi, isim ve aciklama bilgilerini tek merkezden okumanizi saglar. API cevaplari, stored procedure durum kodlari, workflow sonuclari, validasyon durumlari ve enum tabanli domain sonuc akislari icin tasarlanmistir.
+UmbrellaFrame.EnumMeta, enum uyelerine status ve info attribute'lari ekleyerek mesaj, durum tipi, isim ve aciklama bilgilerini tek merkezden okumanizi saglar. API cevaplari, stored procedure durum kodlari, workflow sonuclari, validasyon durumlari ve enum tabanli domain sonuc akislari icin tasarlanmistir.
 
 ### Tasarim Felsefesi
 
@@ -189,13 +189,13 @@ Amaci, enum'a ait metadata'yi dogrudan enum uyesinin yaninda tutmaktir. Dis sist
 ### Kurulum
 
 ```bash
-dotnet add package UmbrellaFrame.EnumCentricStatusManagement
+dotnet add package UmbrellaFrame.EnumMeta
 ```
 
 ### Hizli Baslangic
 
 ```csharp
-using UmbrellaFrame.EnumCentricStatusManagement.Core;
+using UmbrellaFrame.EnumMeta.Core;
 
 public enum SiparisDurumu
 {
@@ -266,7 +266,7 @@ Console.WriteLine(info.Description);
 
 ### Neden Bu Paket?
 
-| Ozellik | EnumCentricStatusManagement | Switch bloklari | Buyuk result framework |
+| Ozellik | EnumMeta | Switch bloklari | Buyuk result framework |
 |---|:---:|:---:|:---:|
 | Enum uzerinde merkezi mesaj | Evet | Manuel | Kismen |
 | Bilinmeyen kodlarda guvenli okuma | Evet | Manuel | Evet |

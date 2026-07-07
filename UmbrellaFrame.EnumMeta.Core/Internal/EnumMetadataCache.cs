@@ -2,7 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Reflection;
 
-namespace UmbrellaFrame.EnumCentricStatusManagement.Core.Internal
+namespace UmbrellaFrame.EnumMeta.Core.Internal
 {
     internal static class EnumMetadataCache
     {
