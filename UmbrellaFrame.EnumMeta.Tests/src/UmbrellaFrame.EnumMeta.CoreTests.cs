@@ -1,5 +1,6 @@
 using UmbrellaFrame.EnumMeta.Core;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace UmbrellaFrame.EnumMeta.Tests
@@ -83,6 +84,34 @@ namespace UmbrellaFrame.EnumMeta.Tests
 
             Assert.False(hasMetadata);
             Assert.Null(metadata);
+        }
+
+        [Fact]
+        public void GetResolvedMessageUsesCallerProvidedResolver()
+        {
+            var messages = new Dictionary<TestStatus, string>
+            {
+                [TestStatus.UserInformationCouldNotBeVerified] = "Custom external message."
+            };
+
+            var message = TestStatus.UserInformationCouldNotBeVerified.GetResolvedMessage(
+                status => messages.TryGetValue((TestStatus)status, out var resolvedMessage)
+                    ? resolvedMessage
+                    : null);
+
+            Assert.Equal("Custom external message.", message);
+        }
+
+        [Fact]
+        public void GetLocalizedMessageUsesCallerProvidedCultureAwareResolver()
+        {
+            var message = TestStatus.UserInformationCouldNotBeVerified.GetLocalizedMessage(
+                (status, culture) => culture.TwoLetterISOLanguageName == "tr"
+                    ? "Kullanici bilgileri dogrulanamadi."
+                    : "User information could not be verified.",
+                "tr");
+
+            Assert.Equal("Kullanici bilgileri dogrulanamadi.", message);
         }
     }
 }

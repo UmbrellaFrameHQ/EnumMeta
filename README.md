@@ -109,6 +109,17 @@ var description = AccountState.Active.GetEnumInfoOrDefault(
     "No description available.");
 ```
 
+### Custom Message Sources
+
+EnumMeta does not own your localization or message source. Resolve messages from any source you prefer: `.resx`, database, JSON, cache, or a remote localization service.
+
+```csharp
+var message = UserRegistrationStatus.VerificationFailed.GetLocalizedMessage(
+    (status, culture) => myMessageProvider.GetMessage(status.ToString(), culture),
+    "tr",
+    "Mesaj bulunamadi.");
+```
+
 ### Public API
 
 | API | Description |
@@ -125,7 +136,9 @@ var description = AccountState.Active.GetEnumInfoOrDefault(
 | `GetEnumInfoOrDefault(InfoType, string)` | Reads one info entry or fallback |
 | `GetInfoMetadata()` | Returns typed `InfoMetadata` |
 | `TryGetInfoMetadata(out InfoMetadata)` | Safe typed info lookup |
-| `GetLocalizedMessage(ResourceManager, string)` | Reads resource text by enum member name |
+| `GetResolvedMessage(Func<Enum, string>, string)` | Resolves a message from a caller-owned source |
+| `GetLocalizedMessage(Func<Enum, CultureInfo, string>, string, string)` | Resolves a localized message from a caller-owned source |
+| `GetLocalizedMessage(ResourceManager, string)` | Reads resource text from a caller-provided resource manager |
 
 ### Runnable Example
 
@@ -249,6 +262,17 @@ Console.WriteLine(info.Name);
 Console.WriteLine(info.Description);
 ```
 
+### Ozel Mesaj Kaynaklari
+
+EnumMeta localization veya mesaj kaynagini sahiplenmez. Mesajlari istediginiz kaynaktan cozebilirsiniz: `.resx`, veritabani, JSON, cache veya uzak localization servisi.
+
+```csharp
+var mesaj = SiparisDurumu.Olusturulamadi.GetLocalizedMessage(
+    (durum, culture) => mesajSaglayici.GetMessage(durum.ToString(), culture),
+    "tr",
+    "Mesaj bulunamadi.");
+```
+
 ### Genel API
 
 | API | Aciklama |
@@ -263,6 +287,8 @@ Console.WriteLine(info.Description);
 | `GetEnumInfoOrDefault(InfoType, string)` | Info alanini veya fallback degeri dondurur |
 | `GetInfoMetadata()` | Tiplenmis `InfoMetadata` dondurur |
 | `TryGetInfoMetadata(out InfoMetadata)` | Guvenli tiplenmis info okuma |
+| `GetResolvedMessage(Func<Enum, string>, string)` | Kullaniciya ait bir kaynaktan mesaj cozer |
+| `GetLocalizedMessage(Func<Enum, CultureInfo, string>, string, string)` | Kullaniciya ait bir kaynaktan lokalize mesaj cozer |
 
 ### Neden Bu Paket?
 

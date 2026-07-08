@@ -72,7 +72,44 @@ namespace UmbrellaFrame.EnumMeta.Core
         }
 
         /// <summary>
-        /// Reads a localized resource string using the enum member name as the resource key.
+        /// Resolves a message for an enum value using a caller-provided message resolver.
+        /// </summary>
+        public static string GetResolvedMessage(this Enum status, Func<Enum, string> messageResolver, string fallbackMessage = "Message not available.")
+        {
+            if (status == null)
+            {
+                throw new ArgumentNullException(nameof(status));
+            }
+
+            if (messageResolver == null)
+            {
+                throw new ArgumentNullException(nameof(messageResolver));
+            }
+
+            return messageResolver(status) ?? fallbackMessage;
+        }
+
+        /// <summary>
+        /// Resolves a localized message for an enum value using a caller-provided message resolver.
+        /// </summary>
+        public static string GetLocalizedMessage(this Enum status, Func<Enum, CultureInfo, string> messageResolver, string language = "en", string fallbackMessage = "Message not available.")
+        {
+            if (status == null)
+            {
+                throw new ArgumentNullException(nameof(status));
+            }
+
+            if (messageResolver == null)
+            {
+                throw new ArgumentNullException(nameof(messageResolver));
+            }
+
+            var culture = new CultureInfo(language);
+            return messageResolver(status, culture) ?? fallbackMessage;
+        }
+
+        /// <summary>
+        /// Reads a localized resource string from a caller-provided resource manager using the enum member name as the resource key.
         /// </summary>
         public static string GetLocalizedMessage(this Enum status, ResourceManager resourceManager, string language = "en")
         {

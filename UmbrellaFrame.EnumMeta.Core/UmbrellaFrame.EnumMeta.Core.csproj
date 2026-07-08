@@ -9,7 +9,7 @@
     <PackageId>UmbrellaFrame.EnumMeta</PackageId>
     <AssemblyName>UmbrellaFrame.EnumMeta.Core</AssemblyName>
     <RootNamespace>UmbrellaFrame.EnumMeta.Core</RootNamespace>
-    <Version>1.4.0</Version>
+    <Version>1.5.0</Version>
     <Authors>Kürşat Solmaz</Authors>
     <Company>UmbrellaFrame</Company>
     <Product>UmbrellaFrame.EnumMeta</Product>

@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here.
 
+## 1.5.0
+
+- Added caller-owned message resolver APIs for custom message and localization sources.
+- Added culture-aware localized message resolution without requiring callers to use `ResourceManager`.
+- Updated documentation with custom `.resx`, database, JSON, cache, and service-backed message examples.
+
 ## 1.4.0
 
 - Renamed the public package identity to `UmbrellaFrame.EnumMeta`.

@@ -60,6 +60,16 @@ if (status.TryGetStatusMetadata(out var metadata))
 }
 ```
 
+### Custom Message Sources
+
+EnumMeta does not own your localization source. Resolve messages from `.resx`, database, JSON, cache, or any service you prefer.
+
+```csharp
+var message = OperationStatus.Failed.GetLocalizedMessage(
+    (status, culture) => myMessageProvider.GetMessage(status.ToString(), culture),
+    "tr");
+```
+
 ### Included APIs
 
 | API | Description |
@@ -71,6 +81,8 @@ if (status.TryGetStatusMetadata(out var metadata))
 | `GetInfoMetadata()` | Typed info metadata |
 | `TryGetInfoMetadata(out InfoMetadata)` | Safe info metadata lookup |
 | `GetEnumInfoOrDefault(InfoType, string)` | Info value with fallback |
+| `GetResolvedMessage(Func<Enum, string>, string)` | Message from a caller-owned source |
+| `GetLocalizedMessage(Func<Enum, CultureInfo, string>, string, string)` | Localized message from a caller-owned source |
 
 ---
 
