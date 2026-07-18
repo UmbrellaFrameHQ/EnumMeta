@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented here.
 
+## 1.6.0
+
+- Added optional `Code` and `ExternalCode` values to `StatusAttribute`.
+- Added `Code` and `ExternalCode` to resolved status metadata.
+- Added strongly typed `StatusMetadata<TValue, TType>` and generic status metadata lookup APIs.
+- Improved NuGet release metadata and symbol package generation.
+
 ## 1.5.0
 
 - Added caller-owned message resolver APIs for custom message and localization sources.

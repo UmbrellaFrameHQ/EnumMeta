@@ -57,7 +57,7 @@ public enum UserRegistrationStatus
     [Status("Email address is already in use.", StatusType.Warning)]
     DuplicateEmail = 1,
 
-    [Status("User information could not be verified.", StatusType.Error)]
+    [Status("User information could not be verified.", StatusType.Error, Code = "USER_VERIFY_FAILED", ExternalCode = "USR-422")]
     VerificationFailed = 2
 }
 
@@ -65,6 +65,7 @@ var status = UserRegistrationStatus.VerificationFailed;
 var metadata = status.GetStatusMetadata();
 
 Console.WriteLine(metadata.Message);
+Console.WriteLine(metadata.Code);
 Console.WriteLine(metadata.IsError);
 ```
 
@@ -120,16 +121,43 @@ var message = UserRegistrationStatus.VerificationFailed.GetLocalizedMessage(
     "Mesaj bulunamadi.");
 ```
 
+### Strongly Typed Reads
+
+Use the generic API when you want compile-time types in the returned metadata model.
+
+```csharp
+var metadata = UserRegistrationStatus.VerificationFailed
+    .GetStatusMetadata<UserRegistrationStatus, StatusType>();
+
+UserRegistrationStatus value = metadata.Value;
+StatusType type = metadata.Type;
+```
+
+### Migrating From The Old Package Name
+
+If you used the previous package name, switch to the new package and namespace:
+
+```bash
+dotnet remove package <previous-package-id>
+dotnet add package UmbrellaFrame.EnumMeta
+```
+
+```csharp
+using UmbrellaFrame.EnumMeta.Core;
+```
+
 ### Public API
 
 | API | Description |
 |---|---|
-| `[Status("message", StatusType)]` | Adds status message and severity metadata |
+| `[Status("message", StatusType, Code = "...", ExternalCode = "...")]` | Adds status message, severity, and optional mapping codes |
 | `[Info("name", "description")]` | Adds ordered display metadata |
 | `GetEnumStatus()` | Reads required `StatusAttribute` |
 | `TryGetEnumStatus(out StatusAttribute)` | Safe status attribute lookup |
 | `GetStatusMetadata()` | Returns typed `StatusMetadata` |
 | `TryGetStatusMetadata(out StatusMetadata)` | Safe typed status lookup |
+| `GetStatusMetadata<TValue, TType>()` | Returns strongly typed status metadata |
+| `TryGetStatusMetadata<TValue, TType>(out StatusMetadata<TValue, TType>)` | Safe strongly typed status lookup |
 | `GetEnumInfos()` | Reads required info entries |
 | `TryGetEnumInfos(out string[])` | Safe info array lookup |
 | `GetEnumInfo(InfoType)` | Reads one required info entry |
@@ -176,7 +204,7 @@ Create a release package:
 
 ```bash
 dotnet build UmbrellaFrame.EnumMeta.Core/UmbrellaFrame.EnumMeta.Core.csproj -c Release
-dotnet pack UmbrellaFrame.EnumMeta.Core/UmbrellaFrame.EnumMeta.Core.csproj -c Release --no-build
+dotnet pack UmbrellaFrame.EnumMeta.Core/UmbrellaFrame.EnumMeta.Core.csproj -c Release --no-build --output artifacts --include-symbols -p:SymbolPackageFormat=snupkg
 ```
 
 ### License
@@ -218,7 +246,7 @@ public enum SiparisDurumu
     [Status("Siparis onay bekliyor.", StatusType.Warning)]
     OnayBekliyor = 1,
 
-    [Status("Siparis olusturulamadi.", StatusType.Error)]
+    [Status("Siparis olusturulamadi.", StatusType.Error, Code = "ORDER_CREATE_FAILED", ExternalCode = "ORD-500")]
     Olusturulamadi = 2
 }
 
@@ -226,6 +254,7 @@ var durum = SiparisDurumu.Olusturulamadi;
 var metadata = durum.GetStatusMetadata();
 
 Console.WriteLine(metadata.Message);
+Console.WriteLine(metadata.Code);
 Console.WriteLine(metadata.IsError);
 ```
 
@@ -273,16 +302,43 @@ var mesaj = SiparisDurumu.Olusturulamadi.GetLocalizedMessage(
     "Mesaj bulunamadi.");
 ```
 
+### Guclu Tipli Okuma
+
+Donen metadata modelinde compile-time tipler istiyorsaniz generic API'yi kullanabilirsiniz.
+
+```csharp
+var metadata = SiparisDurumu.Olusturulamadi
+    .GetStatusMetadata<SiparisDurumu, StatusType>();
+
+SiparisDurumu durum = metadata.Value;
+StatusType tip = metadata.Type;
+```
+
+### Eski Paket Adindan Gecis
+
+Eski paket adini kullaniyorsaniz yeni paket ve namespace'e gecin:
+
+```bash
+dotnet remove package <onceki-paket-id>
+dotnet add package UmbrellaFrame.EnumMeta
+```
+
+```csharp
+using UmbrellaFrame.EnumMeta.Core;
+```
+
 ### Genel API
 
 | API | Aciklama |
 |---|---|
-| `[Status("mesaj", StatusType)]` | Durum mesaji ve durum tipi ekler |
+| `[Status("mesaj", StatusType, Code = "...", ExternalCode = "...")]` | Durum mesaji, durum tipi ve opsiyonel esleme kodlari ekler |
 | `[Info("isim", "aciklama")]` | Sirali gorunum metadata'si ekler |
 | `GetEnumStatus()` | Zorunlu status attribute'unu okur |
 | `TryGetEnumStatus(out StatusAttribute)` | Guvenli status attribute okuma |
 | `GetStatusMetadata()` | Tiplenmis `StatusMetadata` dondurur |
 | `TryGetStatusMetadata(out StatusMetadata)` | Guvenli tiplenmis status okuma |
+| `GetStatusMetadata<TValue, TType>()` | Guclu tipli status metadata dondurur |
+| `TryGetStatusMetadata<TValue, TType>(out StatusMetadata<TValue, TType>)` | Guvenli guclu tipli status okuma |
 | `GetEnumInfo(InfoType)` | Tek bir info alanini okur |
 | `GetEnumInfoOrDefault(InfoType, string)` | Info alanini veya fallback degeri dondurur |
 | `GetInfoMetadata()` | Tiplenmis `InfoMetadata` dondurur |

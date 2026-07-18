@@ -16,7 +16,7 @@ namespace UmbrellaFrame.EnumMeta.Tests
         [Status("Record Deleted.", StatusType.Success)]
         DeletedRecord,
 
-        [Status("User Information Could Not Be Verified", StatusType.Error)]
+        [Status("User Information Could Not Be Verified", StatusType.Error, Code = "USER_VERIFY_FAILED", ExternalCode = "USR-422")]
         UserInformationCouldNotBeVerified,
 
         WithoutStatusMetadata
@@ -66,13 +66,39 @@ namespace UmbrellaFrame.EnumMeta.Tests
         [Fact]
         public void GetStatusMetadataReturnsTypedConvenienceModel()
         {
-            var metadata = TestStatus.NewRecord.GetStatusMetadata();
+            var metadata = TestStatus.UserInformationCouldNotBeVerified.GetStatusMetadata();
 
-            Assert.Equal(TestStatus.NewRecord, metadata.Value);
-            Assert.Equal("New Record Created.", metadata.Message);
-            Assert.Equal(StatusType.Success, metadata.Type);
-            Assert.True(metadata.IsSuccess);
-            Assert.False(metadata.IsError);
+            Assert.Equal(TestStatus.UserInformationCouldNotBeVerified, metadata.Value);
+            Assert.Equal("User Information Could Not Be Verified", metadata.Message);
+            Assert.Equal(StatusType.Error, metadata.Type);
+            Assert.Equal("USER_VERIFY_FAILED", metadata.Code);
+            Assert.Equal("USR-422", metadata.ExternalCode);
+            Assert.False(metadata.IsSuccess);
+            Assert.True(metadata.IsError);
+        }
+
+        [Fact]
+        public void GetStatusMetadataGenericReturnsStronglyTypedConvenienceModel()
+        {
+            var metadata = TestStatus.UserInformationCouldNotBeVerified.GetStatusMetadata<TestStatus, StatusType>();
+
+            Assert.Equal(TestStatus.UserInformationCouldNotBeVerified, metadata.Value);
+            Assert.Equal("User Information Could Not Be Verified", metadata.Message);
+            Assert.Equal(StatusType.Error, metadata.Type);
+            Assert.Equal("USER_VERIFY_FAILED", metadata.Code);
+            Assert.Equal("USR-422", metadata.ExternalCode);
+        }
+
+        [Fact]
+        public void TryGetStatusMetadataGenericReturnsTypedConvenienceModel()
+        {
+            var hasMetadata = TestStatus.UserInformationCouldNotBeVerified.TryGetStatusMetadata<TestStatus, StatusType>(
+                out var metadata);
+
+            Assert.True(hasMetadata);
+            Assert.NotNull(metadata);
+            Assert.Equal(TestStatus.UserInformationCouldNotBeVerified, metadata.Value);
+            Assert.Equal(StatusType.Error, metadata.Type);
         }
 
         [Fact]

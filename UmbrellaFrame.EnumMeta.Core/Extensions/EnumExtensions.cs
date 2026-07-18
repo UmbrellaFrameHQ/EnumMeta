@@ -52,7 +52,7 @@ namespace UmbrellaFrame.EnumMeta.Core
         public static StatusMetadata GetStatusMetadata(this Enum status)
         {
             var attribute = status.GetEnumStatus();
-            return new StatusMetadata(status, attribute.Message, attribute.Type);
+            return new StatusMetadata(status, attribute.Message, attribute.Type, attribute.Code, attribute.ExternalCode);
         }
 
         /// <summary>
@@ -67,7 +67,55 @@ namespace UmbrellaFrame.EnumMeta.Core
                 return false;
             }
 
-            metadata = new StatusMetadata(status, attribute.Message, attribute.Type);
+            metadata = new StatusMetadata(status, attribute.Message, attribute.Type, attribute.Code, attribute.ExternalCode);
+            return true;
+        }
+
+        /// <summary>
+        /// Gets a strongly typed metadata object for an enum value with status metadata.
+        /// </summary>
+        public static StatusMetadata<TValue, TType> GetStatusMetadata<TValue, TType>(this TValue status)
+            where TValue : struct, Enum
+            where TType : struct, Enum
+        {
+            var enumValue = (Enum)(object)status;
+            var attribute = enumValue.GetEnumStatus();
+
+            if (!(attribute.Type is TType type))
+            {
+                throw new InvalidOperationException(
+                    $"Status metadata type '{attribute.Type.GetType().FullName}' cannot be used as '{typeof(TType).FullName}'.");
+            }
+
+            return new StatusMetadata<TValue, TType>(
+                status,
+                attribute.Message,
+                type,
+                attribute.Code,
+                attribute.ExternalCode);
+        }
+
+        /// <summary>
+        /// Attempts to get a strongly typed metadata object for an enum value with status metadata.
+        /// </summary>
+        public static bool TryGetStatusMetadata<TValue, TType>(this TValue status, out StatusMetadata<TValue, TType> metadata)
+            where TValue : struct, Enum
+            where TType : struct, Enum
+        {
+            metadata = null;
+
+            var enumValue = (Enum)(object)status;
+            if (!enumValue.TryGetEnumStatus(out var attribute) || !(attribute.Type is TType type))
+            {
+                return false;
+            }
+
+            metadata = new StatusMetadata<TValue, TType>(
+                status,
+                attribute.Message,
+                type,
+                attribute.Code,
+                attribute.ExternalCode);
             return true;
         }
 

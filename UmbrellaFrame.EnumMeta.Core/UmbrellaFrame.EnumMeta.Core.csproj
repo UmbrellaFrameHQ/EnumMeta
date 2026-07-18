@@ -1,21 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Deterministic>true</Deterministic>
     <PackageId>UmbrellaFrame.EnumMeta</PackageId>
     <AssemblyName>UmbrellaFrame.EnumMeta.Core</AssemblyName>
     <RootNamespace>UmbrellaFrame.EnumMeta.Core</RootNamespace>
-    <Version>1.5.0</Version>
-    <Authors>Kürşat Solmaz</Authors>
+    <Version>1.6.0</Version>
+    <Authors>Kursat Solmaz</Authors>
     <Company>UmbrellaFrame</Company>
     <Product>UmbrellaFrame.EnumMeta</Product>
     <Description>Enum metadata helpers for status, message, and informational state management in .NET applications.</Description>
-    <Copyright>Copyright © UmbrellaFrame 2024</Copyright>
-    <PackageTags>enum;status;attribute;error-handling;metadata;result-management;state-management</PackageTags>
+    <Copyright>Copyright (c) UmbrellaFrame 2024</Copyright>
+    <PackageTags>enum;status;attribute;error-handling;metadata;result-management;state-management;localization</PackageTags>
     <PackageProjectUrl>https://github.com/UmbrellaFrameHQ/EnumMeta</PackageProjectUrl>
     <RepositoryUrl>https://github.com/UmbrellaFrameHQ/EnumMeta</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -24,8 +24,8 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageReleaseNotes>Added status codes, external codes, strongly typed status metadata APIs, and caller-owned message resolver APIs.</PackageReleaseNotes>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="README.md" />
     <None Remove="LICENSE" />
@@ -34,5 +34,4 @@
     <None Include="LICENSE" Pack="true" PackagePath="\" />
     <None Include="icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
-
 </Project>

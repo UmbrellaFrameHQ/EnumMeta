@@ -39,13 +39,14 @@ public enum OperationStatus
     [Status("Operation requires attention.", StatusType.Warning)]
     RequiresAttention = 1,
 
-    [Status("Operation failed.", StatusType.Error)]
+    [Status("Operation failed.", StatusType.Error, Code = "OPERATION_FAILED", ExternalCode = "OPS-500")]
     Failed = 2
 }
 
 var metadata = OperationStatus.Failed.GetStatusMetadata();
 
 Console.WriteLine(metadata.Message);
+Console.WriteLine(metadata.Code);
 Console.WriteLine(metadata.IsError);
 ```
 
@@ -70,14 +71,25 @@ var message = OperationStatus.Failed.GetLocalizedMessage(
     "tr");
 ```
 
+### Strongly Typed Reads
+
+```csharp
+var metadata = OperationStatus.Failed.GetStatusMetadata<OperationStatus, StatusType>();
+
+OperationStatus value = metadata.Value;
+StatusType type = metadata.Type;
+```
+
 ### Included APIs
 
 | API | Description |
 |---|---|
-| `[Status]` | Status message and severity metadata |
+| `[Status]` | Status message, severity, and optional mapping codes |
 | `[Info]` | Ordered display metadata |
 | `GetStatusMetadata()` | Typed status metadata |
 | `TryGetStatusMetadata(out StatusMetadata)` | Safe status metadata lookup |
+| `GetStatusMetadata<TValue, TType>()` | Strongly typed status metadata |
+| `TryGetStatusMetadata<TValue, TType>(out StatusMetadata<TValue, TType>)` | Safe strongly typed status lookup |
 | `GetInfoMetadata()` | Typed info metadata |
 | `TryGetInfoMetadata(out InfoMetadata)` | Safe info metadata lookup |
 | `GetEnumInfoOrDefault(InfoType, string)` | Info value with fallback |

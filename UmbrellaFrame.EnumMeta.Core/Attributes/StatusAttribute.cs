@@ -20,6 +20,16 @@ namespace UmbrellaFrame.EnumMeta.Core
         public Enum Type { get; }
 
         /// <summary>
+        /// Gets or sets an optional stable application code for the enum value.
+        /// </summary>
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets an optional external integration code for the enum value.
+        /// </summary>
+        public string ExternalCode { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="StatusAttribute"/> class.
         /// </summary>
         public StatusAttribute(string message, StatusType type)
