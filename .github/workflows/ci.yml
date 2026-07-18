@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
@@ -31,3 +32,34 @@ jobs:
 
       - name: Pack
         run: dotnet pack UmbrellaFrame.EnumMeta.Core/UmbrellaFrame.EnumMeta.Core.csproj --configuration Release --no-build --output artifacts --include-symbols -p:SymbolPackageFormat=snupkg
+
+  publish-nuget:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test --configuration Release --no-build --verbosity normal
+
+      - name: Pack
+        run: dotnet pack UmbrellaFrame.EnumMeta.Core/UmbrellaFrame.EnumMeta.Core.csproj --configuration Release --no-build --output artifacts --include-symbols -p:SymbolPackageFormat=snupkg
+
+      - name: Publish package to NuGet
+        run: dotnet nuget push "artifacts/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key "${{ secrets.ENUMMETAKEY }}" --skip-duplicate
+
+      - name: Publish symbols to NuGet
+        run: dotnet nuget push "artifacts/*.snupkg" --source https://api.nuget.org/v3/index.json --api-key "${{ secrets.ENUMMETAKEY }}" --skip-duplicate
